@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  /* Admin light theme tokens */
+  --admin-bg: #f8fafc;
+  --admin-sidebar: #ffffff;
+  --admin-topbar: #ffffff;
+  --admin-border: #e2e8f0;
+  --admin-text: #0f172a;
+  --admin-muted: #64748b;
+  --admin-accent: #6366f1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f1f5f9;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Override body for admin */
+body:has(.admin-shell) {
+  background: #f1f5f9;
+  color-scheme: light;
+}
+
+/* Override body for client dark layout */
+body:has(.client-shell) {
+  background: #09090b;
+  color: #fafafa;
+  color-scheme: dark;
+}
+
+/* ═══════════════════════════════════════════════
+   ADMIN LAYOUT — Premium Light
+═══════════════════════════════════════════════ */
+.admin-shell {
+  background: #f1f5f9;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Premium white card */
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+}
+.glass-card-hover {
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+.glass-card-hover:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
+  border-color: #c7d2fe;
+  transform: translateY(-2px);
+}
+
+/* Sidebar — white panel */
+.admin-sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 1px 0 0 #e2e8f0;
+}
+
+/* Topbar — white bar */
+.admin-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Primary button */
+.btn-glow-indigo {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 2px 8px rgba(99,102,241,0.35);
+  transition: box-shadow 0.18s, transform 0.15s;
+}
+.btn-glow-indigo:hover {
+  box-shadow: 0 4px 16px rgba(99,102,241,0.5);
+  transform: translateY(-1px);
+}
+
+/* Nav item active */
+.nav-item-active {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+}
+
+/* Scrollbar */
+.admin-shell ::-webkit-scrollbar { width: 5px; height: 5px; }
+.admin-shell ::-webkit-scrollbar-track { background: transparent; }
+.admin-shell ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+.admin-shell ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Dark scrollbar for client editorial pages */
+.bg-zinc-950 ::-webkit-scrollbar-thumb,
+.client-editorial ::-webkit-scrollbar-thumb { background: #3f3f46; }
+.bg-zinc-950 ::-webkit-scrollbar-track,
+.client-editorial ::-webkit-scrollbar-track { background: #09090b; }
+
+/* Global scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ═══ Shimmer skeleton ═══ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  animation: shimmer 1.5s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Gradient text */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   CLIENT SHELL — Dark-theme overrides for shared pages
+═══════════════════════════════════════════════ */
+.client-shell .text-gray-900 { color: #f1f5f9; }
+.client-shell .text-slate-900 { color: #f1f5f9; }
+.client-shell .text-gray-800 { color: #e2e8f0; }
+.client-shell .text-slate-800 { color: #e2e8f0; }
+.client-shell .text-gray-700 { color: #cbd5e1; }
+.client-shell .text-slate-700 { color: #cbd5e1; }
+.client-shell .text-gray-500 { color: #94a3b8; }
+.client-shell .text-slate-500 { color: #94a3b8; }
+.client-shell .text-gray-400 { color: #64748b; }
+.client-shell .text-slate-400 { color: #64748b; }
+.client-shell .bg-white { background-color: #18181b; }
+.client-shell .bg-gray-50 { background-color: #1c1c20; }
+.client-shell .bg-slate-50 { background-color: #1c1c20; }
+.client-shell .bg-gray-100 { background-color: #27272a; }
+.client-shell .bg-slate-100 { background-color: #27272a; }
+.client-shell .bg-indigo-50 { background-color: rgba(99,102,241,0.15); }
+.client-shell .bg-emerald-50 { background-color: rgba(16,185,129,0.15); }
+.client-shell .bg-amber-50 { background-color: rgba(245,158,11,0.15); }
+.client-shell .bg-red-50 { background-color: rgba(239,68,68,0.15); }
+.client-shell .border-gray-100 { border-color: #27272a; }
+.client-shell .border-gray-200 { border-color: #3f3f46; }
+.client-shell .border-slate-200 { border-color: #3f3f46; }
+.client-shell .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+
+/* Hover state overrides for client dark theme */
+.client-shell .hover\:bg-gray-50:hover { background-color: #27272a; }
+.client-shell .hover\:bg-gray-100:hover { background-color: #3f3f46; }
+.client-shell .hover\:bg-gray-200:hover { background-color: #52525b; }
+.client-shell .hover\:bg-slate-50:hover { background-color: #27272a; }
+.client-shell .hover\:bg-slate-100:hover { background-color: #3f3f46; }
+.client-shell .hover\:bg-indigo-100:hover { background-color: rgba(99,102,241,0.25); }
+.client-shell .hover\:bg-emerald-100:hover { background-color: rgba(16,185,129,0.25); }
+.client-shell .hover\:bg-red-100:hover { background-color: rgba(239,68,68,0.25); }
+.client-shell .hover\:text-gray-800:hover { color: #e2e8f0; }
+.client-shell .hover\:text-slate-800:hover { color: #e2e8f0; }
+.client-shell .divide-gray-50 > :not(:last-child) { border-color: #27272a; }
+
